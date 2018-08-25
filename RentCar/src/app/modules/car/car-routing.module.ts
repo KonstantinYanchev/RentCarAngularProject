@@ -13,7 +13,7 @@ const routes : Route[] = [
   { path: 'create', component: CarCreateComponent },
   { path: 'details/:id', component: CarDetailsComponent },
   { path: 'edit/:id', component: CarEditComponent },
-  { path: 'list', component: CarListComponent },
+  { path: 'list', component: CarListComponent }
 ]
 
 @NgModule({

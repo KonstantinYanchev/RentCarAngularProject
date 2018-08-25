@@ -17,6 +17,7 @@ export class AuthenticationService {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(function (data: any) {
         self.toastrService.success("Hello, " + data.user.email, "Success");
+        self.router.navigate(['/authentication/signIn']);
       })
       .catch(function (error: any) {
         self.toastrService.error(error.message, "Error");
@@ -30,7 +31,6 @@ export class AuthenticationService {
         console.log(data);
         firebase.auth().currentUser.getIdToken()
           .then(function (token: string) {
-            debugger;
             self.token = token;
           })
           .catch(function (error: any) {
@@ -38,7 +38,7 @@ export class AuthenticationService {
           });
 
           //change it...
-          self.router.navigate(['/authentication/signUp']);
+          self.router.navigate(['/cars/list']);
           self.toastrService.success('Logged in!', 'Success');
       })
       .catch(function (error: any) {
@@ -50,9 +50,9 @@ export class AuthenticationService {
     let self = this;
     firebase.auth().signOut()
     .then(function() {
-      self.token = null;
       self.toastrService.success("Successfully signed out", "Success");
       self.router.navigate(['/authentication/signIn']);
+      self.token = null;
     })
     .catch(function(error: any) {
       self.toastrService.error(error.message, "Error");
