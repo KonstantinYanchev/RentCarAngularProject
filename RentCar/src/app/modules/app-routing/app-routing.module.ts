@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { SignInComponent } from '../authentication-module/sign-in/sign-in.component';
 import { SignUpComponent } from '../authentication-module/sign-up/sign-up.component';
-//import { AuthGuard } from './auth/auth.guard';
+//import { AuthenticationGuard } from '../authentication-module/guards/authentication.guard.ts';
 
 const routes: Route[] = [
   {
@@ -13,7 +13,7 @@ const routes: Route[] = [
   },
   // { path: 'recipes', 
   //  loadChildren: () => RecipeModule ,
-  //  canActivate: [AuthGuard] 
+  //  canActivate: [AuthenticationGuard] 
   // }, 
   {
     path: '**', redirectTo: '/authentication/signIn'

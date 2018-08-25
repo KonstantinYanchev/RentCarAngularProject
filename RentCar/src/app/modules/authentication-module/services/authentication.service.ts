@@ -47,8 +47,16 @@ export class AuthenticationService {
   }
 
   logout() {
-    firebase.auth().signOut();
-    this.token = null;
+    let self = this;
+    firebase.auth().signOut()
+    .then(function() {
+      self.token = null;
+      self.toastrService.success("Successfully signed out", "Success");
+      self.router.navigate(['/authentication/signIn']);
+    })
+    .catch(function(error: any) {
+      self.toastrService.error(error.message, "Error");
+    });
   }
 
   async getToken() {
