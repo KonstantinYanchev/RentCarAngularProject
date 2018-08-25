@@ -23,7 +23,7 @@
           <a class="nav-link" routerLink="/authentication/signUp">Sign up</a>
         </li>
         <li class="nav-item" *ngIf="authenticationService.isAuthenticated()">
-          <a class="nav-link" (click)="logout()">Logout</a>
+          <a class="nav-link" (click)="logout()">Logout, {{authenticationService.currentUserEmail}}</a>
         </li>
       </ul>
     </div>

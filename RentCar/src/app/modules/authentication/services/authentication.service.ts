@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
   token: string = '';
+  currentUserEmail: string = '';
 
   constructor(private toastrService: ToastrService,
     private router: Router) { }
@@ -29,6 +30,7 @@ export class AuthenticationService {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(function (data: any) {
         console.log(data);
+        self.currentUserEmail = firebase.auth().currentUser.email;
         firebase.auth().currentUser.getIdToken()
           .then(function (token: string) {
             self.token = token;
@@ -50,12 +52,12 @@ export class AuthenticationService {
     let self = this;
     firebase.auth().signOut()
     .then(function() {
-      self.toastrService.success("Successfully signed out", "Success");
+      self.toastrService.success('Successfully signed out', 'Success');
       self.router.navigate(['/authentication/signIn']);
       self.token = null;
     })
     .catch(function(error: any) {
-      self.toastrService.error(error.message, "Error");
+      self.toastrService.error(error.message, 'Error');
     });
   }
 
@@ -66,6 +68,6 @@ export class AuthenticationService {
   }
 
   isAuthenticated(): boolean {
-    return this.token != null;
+    return this.token != null && this.token != '';
   }
 }
