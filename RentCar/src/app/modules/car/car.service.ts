@@ -17,9 +17,17 @@ export class CarService {
 
   getAllCars() {
     let self = this;
-    return this.http.get(baseUrl + '.json').toPromise()
-      .then(function (data: any) {
-        console.log(data);
+    return this.http.get(baseUrl + '.json')
+      .toPromise()
+      .then(function (responseObject: any) {
+        let data: CarModel[] = [];
+        let responseObjects: string[] = Object.getOwnPropertyNames(responseObject);
+        for (let i = 0; i < responseObjects.length; i++) {
+          let obj: any = responseObject[responseObjects[i]];
+          data.push(new CarModel(responseObjects[i], obj.brand, obj.model, obj.engine, obj.horsePower, obj.imageUrl, obj.createdBy, obj.yearOfManufacture, obj.pricePerDay));
+        }
+
+        return data;
       })
       .catch(function (error: any) {
         self.toastr.error(error.message, "Error");

@@ -1,15 +1,21 @@
 export class CarModel {
-    constructor(public brand?: string,
+    constructor(
+        public id?: string,
+        public brand?: string,
         public model?: string,
         public engine?: string,
         public horsePower?: number,
         public imageUrl?: string,
-        public createdBy?: string) {
-        this.brand = '';
-        this.model = '';
-        this.engine = '';
-        this.horsePower = null;
-        this.imageUrl = '';
-        this.createdBy = '';
+        public createdBy?: string,
+        public yearOfManufacture?: number,
+        public pricePerDay?: number) {
+        this.brand = brand;
+        this.model = model;
+        this.engine = engine;
+        this.horsePower = horsePower;
+        this.imageUrl = imageUrl;
+        this.createdBy = createdBy;
+        this.yearOfManufacture = yearOfManufacture;
+        this.pricePerDay = pricePerDay;
     }
 }

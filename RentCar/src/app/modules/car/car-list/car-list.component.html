@@ -1,3 +1,12 @@
-<p>
-  car-list works!
-</p>
+<div class="row">
+  <div *ngFor="let car of cars; let i=index" class="col-xs-4 col-md-4 col-lg-4">
+    <div class="card mb-3">
+      <h3 class="card-header">{{car.brand}}, {{car.model}}</h3>
+      <div class="card-body">
+        <h6 class="card-subtitle text-muted">{{car.yearOfManufacture}} year, Price per day: {{car.pricePerDay}} BGN</h6>
+      </div>
+      <img src="{{car.imageUrl}}" alt="Card image" />
+      <a class="btn btn-info" routerLink="/cars/details/{{car.id}}">View more</a>
+    </div>
+  </div>
+</div>

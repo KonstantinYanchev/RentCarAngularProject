@@ -11,12 +11,20 @@
         <input required type="text" id="model" name="model" ngModel [(ngModel)]="model.model" class="form-control">
       </div>
       <div class="form-group">
+        <label for="yearOfManufacture">Year of manufacture</label>
+        <input required type="text" id="yearOfManufacture" name="yearOfManufacture" ngModel [(ngModel)]="model.yearOfManufacture" class="form-control">
+      </div>
+      <div class="form-group">
         <label for="engine">Engine</label>
         <input required type="text" id="engine" name="engine" ngModel [(ngModel)]="model.engine" class="form-control">
       </div>
       <div class="form-group">
         <label for="horsePower">Horse power</label>
         <input required type="number" id="horsePower" name="horsePower" ngModel [(ngModel)]="model.horsePower" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="pricePerDay">Price per day</label>
+        <input required type="number" id="pricePerDay" name="pricePerDay" ngModel [(ngModel)]="model.pricePerDay" class="form-control">
       </div>
       <div class="form-group">
         <label for="imageUrl">Image url</label>
