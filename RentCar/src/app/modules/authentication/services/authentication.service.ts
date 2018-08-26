@@ -39,7 +39,6 @@ export class AuthenticationService {
             console.log(error);
           });
 
-          //change it...
           self.router.navigate(['/cars/list']);
           self.toastrService.success('Logged in!', 'Success');
       })
@@ -61,11 +60,11 @@ export class AuthenticationService {
     });
   }
 
-  async getToken() {
-    this.token = await firebase.auth().currentUser.getIdToken();
-    debugger;
-    return this.token;
-  }
+  // async getToken() {
+  //   this.token = await firebase.auth().currentUser.getIdToken();
+  //   debugger;
+  //   return this.token;
+  // }
 
   isAuthenticated(): boolean {
     return this.token != null && this.token != '';

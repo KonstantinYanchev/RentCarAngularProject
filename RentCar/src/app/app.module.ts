@@ -9,6 +9,8 @@ import { CarModule } from './modules/car/car.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '../../node_modules/@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,18 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    HttpClientModule,
     AppRoutingModule,
     AuthenticationModule,
     CarModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
