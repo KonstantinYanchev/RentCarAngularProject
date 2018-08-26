@@ -1,3 +1,16 @@
-<div>
-  
+<div class="row" *ngIf="car">
+    <div class="centeredDiv col-xs-8 col-md-8 col-lg-8">
+        <div class="card mb-3">
+            <h3 class="card-header">{{car.brand}}, {{car.model}}</h3>
+            <div class="card-body">
+                <h6 class="card-subtitle text-muted marginBottom5">Engine: {{car.engine}}</h6>
+                <h6 class="card-subtitle text-muted marginBottom5">Horse power: {{car.horsePower}} HP</h6>
+                <h6 class="card-subtitle text-muted marginBottom5">Year of manufacture: {{car.yearOfManufacture}}</h6>
+                <h6 class="card-subtitle text-muted marginBottom5">Price per day: {{car.pricePerDay}} BGN</h6>
+                <h6 class="card-subtitle text-muted">Owner: {{car.createdBy}}</h6>
+            </div>
+            <img src="{{car.imageUrl}}" alt="Card image" />
+            <a class="btn btn-secondary" *ngIf="canEdit()" routerLink="/cars/edit/{{car.id}}">Edit</a>
+        </div>
+    </div>
 </div>

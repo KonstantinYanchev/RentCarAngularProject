@@ -1,3 +1,37 @@
-<p>
-  car-edit works!
-</p>
+<div class="row" *ngIf="car">
+  <div class="col-4 centeredDiv">
+    <h2>Add your car</h2>
+    <form #editCarForm="ngForm" (ngSubmit)="edit()">
+      <div class="form-group">
+        <label for="brand">Brand</label>
+        <input required type="text" id="brand" name="brand" ngModel [(ngModel)]="car.brand" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input required type="text" id="model" name="model" ngModel [(ngModel)]="car.model" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="yearOfManufacture">Year of manufacture</label>
+        <input required type="text" id="yearOfManufacture" name="yearOfManufacture" ngModel [(ngModel)]="car.yearOfManufacture" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="engine">Engine</label>
+        <input required type="text" id="engine" name="engine" ngModel [(ngModel)]="car.engine" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="horsePower">Horse power</label>
+        <input required type="number" id="horsePower" name="horsePower" ngModel [(ngModel)]="car.horsePower" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="pricePerDay">Price per day</label>
+        <input required type="number" id="pricePerDay" name="pricePerDay" ngModel [(ngModel)]="car.pricePerDay" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image url</label>
+        <input required type="text" id="imageUrl" name="imageUrl" ngModel [(ngModel)]="car.imageUrl" class="form-control">
+      </div>
+      <button class="btn btn-primary floatRight" [disabled]="editCarForm.invalid" type="submit">Confirm changes</button>
+    </form>
+    <button class="btn btn-danger floatRight marginRight5" (click)="delete()" type="submit">Delete car</button>
+  </div>
+</div>

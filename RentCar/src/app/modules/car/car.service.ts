@@ -15,6 +15,10 @@ export class CarService {
     private toastr: ToastrService,
     private router: Router) { }
 
+  getById(carId: string) {
+    return this.http.get<CarModel>(baseUrl + carId + '/.json');
+  }
+
   getAllCars() {
     let self = this;
     return this.http.get(baseUrl + '.json')
@@ -44,5 +48,30 @@ export class CarService {
       .catch(function (error: any) {
         self.toastr.error(error.message, 'Error');
       })
+  }
+
+  updateCar(body: any) {
+    let self = this;
+    return this.http.patch(baseUrl + '.json', body).toPromise()
+    .then(function() {
+      self.router.navigate(['/cars/list']);
+      self.toastr.success("Car has been updated successfully", "Success");
+    })
+    .catch(function(error: any) {
+      self.toastr.error(error.message, "Error");
+    });
+  }
+
+  deleteCar(id: string) {
+    let self = this;
+    debugger;
+    return this.http.delete(baseUrl + id + '/.json').toPromise()
+    .then(function () {
+      self.router.navigate(['/cars/list']);
+      self.toastr.success("Car has been deleted successfully", "Success");
+    })
+    .catch(function(error: any) {
+      self.toastr.error(error.message, "Error");
+    })
   }
 }
