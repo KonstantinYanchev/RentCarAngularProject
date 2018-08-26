@@ -60,7 +60,6 @@ export class CarService {
 
   deleteCar(id: string) {
     let self = this;
-    debugger;
     return this.http.delete(baseUrl + id + '/.json').toPromise()
     .then(function () {
       self.router.navigate(['/cars/list']);

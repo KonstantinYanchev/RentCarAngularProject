@@ -51,6 +51,10 @@ export class CarPendingApprovalComponent implements OnInit {
       });
   }
 
+  reject(carId: string) {
+    this.carService.deleteCar(carId);
+  }
+
   private getCarById(carId: string) {
     for (let i = 0; i < this.cars.length; i++) {
       if (this.cars[i].id == carId) {
