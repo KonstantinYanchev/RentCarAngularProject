@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService } from 'src/app/modules/car/car.service';
 import { CarModel } from 'src/app/modules/car/models/car.model';
-import { Observable } from 'rxjs';
+import { CarService } from '../car.service';
 
 @Component({
-  selector: 'app-car-list',
-  templateUrl: './car-list.component.html',
-  styleUrls: ['./car-list.component.css']
+  selector: 'app-car-pending-approval',
+  templateUrl: './car-pending-approval.component.html',
+  styleUrls: ['./car-pending-approval.component.css']
 })
-export class CarListComponent implements OnInit {
+export class CarPendingApprovalComponent implements OnInit {
   cars: CarModel[] = [];
   constructor(private carService: CarService) { }
 
@@ -16,7 +15,8 @@ export class CarListComponent implements OnInit {
     let data: any = await this.carService.getAllCars();
     for (let i = 0; i < data.length; i++) {
       let car: CarModel = data[i];
-      if (car.isApproved) {
+      debugger;
+      if (!car.isApproved) {
         this.cars.push(new CarModel(car.id,
           car.brand,
           car.model,
@@ -29,5 +29,9 @@ export class CarListComponent implements OnInit {
           car.isApproved));
       }
     }
+  }
+
+  approve(carID: string) {
+    console.log(carID);
   }
 }

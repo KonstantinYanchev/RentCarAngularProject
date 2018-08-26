@@ -3,6 +3,8 @@ import * as firebase from 'firebase';
 import { ToastrService } from '../../../../../node_modules/ngx-toastr';
 import { Router } from '@angular/router';
 
+const adminEmail = "yanchevkonstantin@gmail.com";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -68,5 +70,9 @@ export class AuthenticationService {
 
   isAuthenticated(): boolean {
     return this.token != null && this.token != '';
+  }
+
+  isAdmin(): boolean {
+    return this.currentUserEmail == adminEmail;
   }
 }

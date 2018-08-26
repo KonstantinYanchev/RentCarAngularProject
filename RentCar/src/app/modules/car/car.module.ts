@@ -7,6 +7,7 @@ import { CarCreateComponent } from './car-create/car-create.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import { CarListComponent } from './car-list/car-list.component';
+import { CarPendingApprovalComponent } from './car-pending-approval/car-pending-approval.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,8 @@ import { CarListComponent } from './car-list/car-list.component';
     CarCreateComponent,
     CarDetailsComponent,
     CarEditComponent,
-    CarListComponent]
+    CarListComponent,
+    CarPendingApprovalComponent,
+    ]
 })
 export class CarModule { }

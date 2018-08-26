@@ -5,6 +5,7 @@ import { CarListComponent } from './car-list/car-list.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { CarCreateComponent } from './car-create/car-create.component';
+import { CarPendingApprovalComponent } from 'src/app/modules/car/car-pending-approval/car-pending-approval.component';
 
 import { AuthenticationGuard } from '../authentication/guards/authentication.guard';
 
@@ -13,7 +14,8 @@ const routes : Route[] = [
   { path: 'create', component: CarCreateComponent },
   { path: 'details/:id', component: CarDetailsComponent },
   { path: 'edit/:id', component: CarEditComponent },
-  { path: 'list', component: CarListComponent }
+  { path: 'list', component: CarListComponent },
+  { path: 'pending', component: CarPendingApprovalComponent }
 ]
 
 @NgModule({

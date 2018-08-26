@@ -28,7 +28,7 @@ export class CarService {
         let responseObjects: string[] = Object.getOwnPropertyNames(responseObject);
         for (let i = 0; i < responseObjects.length; i++) {
           let obj: any = responseObject[responseObjects[i]];
-          data.push(new CarModel(responseObjects[i], obj.brand, obj.model, obj.engine, obj.horsePower, obj.imageUrl, obj.createdBy, obj.yearOfManufacture, obj.pricePerDay));
+          data.push(new CarModel(responseObjects[i], obj.brand, obj.model, obj.engine, obj.horsePower, obj.imageUrl, obj.createdBy, obj.yearOfManufacture, obj.pricePerDay, obj.isApproved));
         }
 
         return data;

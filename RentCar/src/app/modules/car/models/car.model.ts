@@ -8,7 +8,8 @@ export class CarModel {
         public imageUrl?: string,
         public createdBy?: string,
         public yearOfManufacture?: number,
-        public pricePerDay?: number) {
+        public pricePerDay?: number,
+        public isApproved: boolean = false) {
         this.brand = brand;
         this.model = model;
         this.engine = engine;
@@ -17,5 +18,6 @@ export class CarModel {
         this.createdBy = createdBy;
         this.yearOfManufacture = yearOfManufacture;
         this.pricePerDay = pricePerDay;
+        this.isApproved = isApproved;
     }
 }

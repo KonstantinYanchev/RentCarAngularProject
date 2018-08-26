@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Rent a car</a>
+    <a class="navbar-brand" routerLink="/cars/list">Rent a car</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/cars/create">Add a car</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="authenticationService.isAdmin()">
+          <a class="nav-link">Admin section</a>
+          <div class="dropdown-content">
+            <a routerLink="/cars/pending">Pending approval</a>
+          </div>
         </li>
       </ul>
       <ul class="navbar-nav signAction">
