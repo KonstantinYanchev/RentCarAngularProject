@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarModel } from 'src/app/modules/car/models/car.model';
 import { CarService } from '../car.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-pending-approval',
@@ -9,7 +11,9 @@ import { CarService } from '../car.service';
 })
 export class CarPendingApprovalComponent implements OnInit {
   cars: CarModel[] = [];
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService,
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   async ngOnInit() {
     let data: any = await this.carService.getAllCars();
@@ -31,7 +35,27 @@ export class CarPendingApprovalComponent implements OnInit {
     }
   }
 
-  approve(carID: string) {
-    console.log(carID);
+  approve(carId: string) {
+    let car: CarModel = this.getCarById(carId);
+    let self = this;
+    car.isApproved = true;
+
+    let updateRequestBody = {
+      [carId]: car
+    }
+
+    this.carService.updateCar(updateRequestBody)
+      .then(function () {
+        self.router.navigate(['/cars/list']);
+        self.toastrService.success("Car has been approved", "Success");
+      });
+  }
+
+  private getCarById(carId: string) {
+    for (let i = 0; i < this.cars.length; i++) {
+      if (this.cars[i].id == carId) {
+        return this.cars[i];
+      }
+    }
   }
 }

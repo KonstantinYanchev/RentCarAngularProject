@@ -20,7 +20,7 @@ import { CarPendingApprovalComponent } from './car-pending-approval/car-pending-
     CarDetailsComponent,
     CarEditComponent,
     CarListComponent,
-    CarPendingApprovalComponent,
-    ]
+    CarPendingApprovalComponent
+  ]
 })
 export class CarModule { }

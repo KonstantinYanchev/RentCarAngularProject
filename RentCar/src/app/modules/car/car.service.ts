@@ -42,7 +42,7 @@ export class CarService {
     let self = this;
     return this.http.post(baseUrl + '.json', newCar).toPromise()
       .then(function (response: any) {
-        self.toastr.success('Successfully added your car!', 'Success');
+        self.toastr.success('Successfully added your car for approval!', 'Success');
         self.router.navigate(['/cars/list']);
       })
       .catch(function (error: any) {
@@ -53,10 +53,6 @@ export class CarService {
   updateCar(body: any) {
     let self = this;
     return this.http.patch(baseUrl + '.json', body).toPromise()
-    .then(function() {
-      self.router.navigate(['/cars/list']);
-      self.toastr.success("Car has been updated successfully", "Success");
-    })
     .catch(function(error: any) {
       self.toastr.error(error.message, "Error");
     });

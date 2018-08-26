@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CarModel } from '../models/car.model';
 import { CarService } from 'src/app/modules/car/car.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-car-edit',
@@ -13,7 +14,10 @@ export class CarEditComponent implements OnInit {
   car: CarModel;
 
   constructor(private carService: CarService,
-  private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastrService: ToastrService,
+  ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -25,15 +29,20 @@ export class CarEditComponent implements OnInit {
   }
 
   edit() {
+    this.car.isApproved = false;
     const updateRequestBody = {
-      [this.id] : this.car
+      [this.id]: this.car
     }
 
-    this.carService.updateCar(updateRequestBody);
+    let self = this;
+    this.carService.updateCar(updateRequestBody)
+      .then(function () {
+        self.router.navigate(['/cars/list']);
+        self.toastrService.success("Car has been updated successfully and added for approval", "Success");
+      });
   }
 
   delete() {
     this.carService.deleteCar(this.car.id);
   }
-
 }
